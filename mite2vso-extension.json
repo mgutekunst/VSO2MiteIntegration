@@ -1,0 +1,56 @@
+{
+    "manifestVersion": 1,
+    "id": "sample-extension",
+    "version": "0.1.0",
+    "name": "My first sample extension",
+    "scopes": [
+        "vso.work"
+    ],
+    "description": "A sample Visual Studio Services extension.",
+    "publisher": "ManuelGutekunst",
+    "public": false,
+    "icons": {
+        "default": "img\/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "branding": {
+        "color": "rgb(255,0,0)",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "scripts",
+            "addressable": true
+        },
+        {
+            "path": "main.html",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Collaborate"
+    ],
+    "contributions": [
+        {
+            "id": "home",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "type": "ms.vss-web.hub",
+            "description": "Action that adds the current work item id to mite",
+            "properties": {
+                "name": "test",
+                "order": 100,
+                "uri": "main.html"
+            }
+        }
+    ]
+}

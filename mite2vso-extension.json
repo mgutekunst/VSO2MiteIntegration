@@ -47,7 +47,7 @@
             "type": "ms.vss-web.hub",
             "description": "Action that adds the current work item id to mite",
             "properties": {
-                "name": "test",
+                "name": "Add tracker in mite",
                 "order": 100,
                 "uri": "main.html"
             }

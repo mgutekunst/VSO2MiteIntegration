@@ -42,14 +42,16 @@
         {
             "id": "home",
             "targets": [
-                "ms.vss-work-web.work-hub-group"
+                "ms.vss-work-web.work-item-context-menu"
             ],
-            "type": "ms.vss-web.hub",
+            "type": "ms.vss-web.action",
             "description": "Action that adds the current work item id to mite",
             "properties": {
-                "name": "Add tracker in mite",
-                "order": 100,
-                "uri": "main.html"
+                "text": "Add to mite",
+                "title": "Updates the title of the work item from the extension",
+                "icon": "img\/logo.png",
+                "uri": "main.html",
+                "group": "miteAction"
             }
         }
     ]

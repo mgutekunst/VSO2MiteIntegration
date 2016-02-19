@@ -28,19 +28,25 @@
 <body>
     <script type="text/javascript">
         // Initialize the VSS sdk
-        VSS.init({
-            setupModuleLoader: true,
-            moduleLoaderConfig: {
-                paths: {
-                    "Scripts": "scripts"
-                }
-            }
-        });
+        VSS.init();
 
-        // Wait for the SDK to be initialized
-        VSS.ready(function () {
-            require(["Scripts/app"], function (app) { });
-        });
+	// Use an IIFE to create an object that satisfies the IContributedMenuSource contract
+      var menuContributionHandler = (function () {
+         "use strict";
+         return {
+             // This is a callback that gets invoked when a user clicks the newly contributed menu item
+             // The actionContext parameter contains context data surrounding the circumstances of this
+             // action getting invoked.
+             execute: function (actionContext) {
+                 alert("Hello, world");
+             }
+         };
+     }());
+
+ // Associate the menuContributionHandler object with the "myAction" menu contribution from the manifest.
+     VSS.register("home", menuContributionHandler);
+ </script>
+	
     </script>
 
     <h1>Mite 2 VSO integration </h1>

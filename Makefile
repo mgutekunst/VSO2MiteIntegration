@@ -5,6 +5,7 @@ all: publish
 
 
 build:
+	tsc scripts/main.ts
 	tfx extension create --manifest-globs mite2vso-extension.json
 
 publish:

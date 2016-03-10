@@ -1,21 +1,6 @@
 /// <reference path='../../typings/main.d.ts' />
-
-// class ExecutionObject{
-// 	 constructor(){
-// 		 this.execute = function(ac){
-// 			 alert("Wohoo");
-// 		 }
-// 	 }
-// 	execute: Function;
-// }
-
-//  class Connector {
-// 	"use strict"
-// 	public execute() : ExecutionObject {
-// 		return  new ExecutionObject;
-		
-// 	}
-// }
+///<reference path='RestService.ts' />
+///<reference path='TitleCreator.ts' />
 
 var menuContributionHandler = (function () {
     "use strict";
@@ -25,7 +10,9 @@ var menuContributionHandler = (function () {
 	// action getting invoked.
 	execute: function (actionContext) {
 	    alert("Hello, mite");
-
+	    var rest = new RestService();
+	    var creator = new TitleCreator(actionContext);
+	    rest.getTitle(actionContext.workItemId,creator.createTitle);
 	}
     };
 }());

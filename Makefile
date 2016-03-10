@@ -1,7 +1,7 @@
 include variables.mk #user specific variables are stored here....
 
 
-all: publish
+all: buildAndPublish
 
 clean:
 	rm -rfv dist
@@ -21,5 +21,7 @@ build:
 package: build
 	tfx extension create --manifest-globs mite2vso-extension.json
 
-publish: build
+publish: 
 	tfx extension publish --manifest-globs mite2vso-extension.json --share-with $(shareTarget) --token $(token)
+
+buildAndPublish: build publish

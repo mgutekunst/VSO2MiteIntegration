@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
+        "module": "amd",
         "outDir": "dist/",
+        "out": "dist/scripts/main.js",
         "rootDir": "src"
     },
     "files": [
-	"src/scripts/main.ts"
+        "src/scripts/main.ts"
     ]
 }

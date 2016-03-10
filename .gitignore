@@ -1,3 +1,4 @@
 /*.vsix
 /variables.mk
-/scripts/main.js
+/dist
+/typings

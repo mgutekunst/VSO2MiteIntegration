@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "sample-extension",
     "version": "0.1.0",
-    "name": "My first sample extension",
+    "name": "Mite 2 VSTS integration",
     "scopes": [
         "vso.work"
     ],
@@ -27,13 +27,10 @@
             "addressable": true
         },
         {
-            "path": "scripts",
-            "addressable": true
-        },
-        {
-            "path": "main.html",
+            "path": "dist",
             "addressable": true
         }
+        
     ],
     "categories": [
         "Collaborate"
@@ -50,7 +47,7 @@
                 "text": "Add to mite",
                 "title": "Updates the title of the work item from the extension",
                 "icon": "img\/logo.png",
-                "uri": "main.html",
+                "uri": "dist/main.html",
                 "group": "miteAction"
             }
         }

@@ -1,4 +1,4 @@
-/// <reference path='../typings/VSS.d.ts' />
+/// <reference path='../../typings/main.d.ts' />
 
 // class ExecutionObject{
 // 	 constructor(){

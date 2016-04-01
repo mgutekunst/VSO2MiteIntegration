@@ -13,7 +13,7 @@ typings:
 	typings install
 
 build:
-	mkdir -p dist/scripts
+#	mkdir dist/scripts
 	cp -v src/main.html dist/
 	cp -v src/scripts/VSS.SDK.js dist/scripts/VSS.SDK.js
 	tsc 

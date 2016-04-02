@@ -1,18 +1,20 @@
 /// <reference path='../../typings/main.d.ts' />
 
+interface IMiteConfig {
+    apiKey: string;
+    account: string;
+}
+
 class MiteClient {
     
     private http :XMLHttpRequest;
     private apiKey :string;
-    
-    constructor(apiKey :string){
-	this.http = new XMLHttpRequest();
-	this.http.onload = this.onRequestLoaded;
-	this.apiKey = apiKey;
-    }
 
-    onRequestLoaded () :void {
-	console.log(this.http.responseText);
+    private config :IMiteConfig;
+    
+    constructor(config: IMiteConfig){
+	this.http = new XMLHttpRequest();
+	this.config = config;
     }
 
     createTimeEntry(callback :(response :string) => any) : void{
@@ -37,9 +39,10 @@ class MiteClient {
 
 	// add some helpful headers. this needs to be done after opening the XMLHttpRequest
 	this.http.setRequestHeader("X-Requested-With",'XMLHttpRequest');
-	this.http.setRequestHeader("X-MiteApiKey",this.apiKey);
-	this.http.setRequestHeader("X-MiteAccount","account");
 	this.http.setRequestHeader("Content-Type","application/json");
+
+	this.http.setRequestHeader("X-MiteApiKey",this.config.apiKey);
+	this.http.setRequestHeader("X-MiteAccount",this.config.account);
 
 	this.http.send(JSON.stringify(content));
     }

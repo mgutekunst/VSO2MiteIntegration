@@ -14,7 +14,10 @@ var menuContributionHandler = (function () {
 	    var rest = new RestService();
 	    var creator = new TitleCreator(actionContext);
 	    rest.getTitle(actionContext.workItemId,creator.createTitle);
-	    var mite = new MiteClient("miteKey");
+	    var mite = new MiteClient({
+		apiKey: "key",
+		account: "account"
+	    });
 	    mite.createTimeEntry(function(response){
 		alert(response);
 	    });

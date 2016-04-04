@@ -6,7 +6,7 @@ class TitleCreator {
 	this.context = actionContext;
     }
     
-    public createTitle(id:number, title:string) {
-	alert("Wanted string is\n " + id + " ### " + title);
+    public createTitle(id:number, title:string) :string {
+	return id + " ### " + title;
     }
 }

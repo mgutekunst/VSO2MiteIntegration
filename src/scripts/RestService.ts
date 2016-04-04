@@ -1,6 +1,6 @@
 /// <reference path='../../typings/main.d.ts' />
 class RestService {
-    getTitle(id: number,result) : void {
+    getIdAndTitle(id: number,callback :(id:number, title:string)=>void) : void {
 	    VSS.require(["VSS/Service", "TFS/WorkItemTracking/RestClient"], function (VSS_Service, TFS_Wit_WebApi){
 		// alert("insited VSS");
 		
@@ -10,7 +10,7 @@ class RestService {
 		var items = [id];
 		witClient.getWorkItems(/* some work item IDs */ items, ["System.Title"]).then(
 		function(workItems) {
-		    result(id,workItems[0].fields["System.Title"]);
+		    callback(id,workItems[0].fields["System.Title"]);
 		});
 	    });
 	}

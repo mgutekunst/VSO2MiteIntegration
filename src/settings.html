@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Mite 2 VSO</title>
+    <link rel="stylesheet" href="css/app.css" type="text/css" />
+    <script src="scripts/VSS.SDK.js"></script>
+    <script data-main="scripts/settings" src="lib/require.js"></script>
+</head>
+<body>
+    <h1>Mite 2 VSO integration settings</h1>
+
+    <form id="settingsForm">
+      Account name: <br>
+      <input type="text" name="account"><br>
+      Api key: <br>
+      <input type="text" name="apiKey"><br>
+      Project Id: <br>
+      <input type="text" name="project_id"><br>
+      Service Id: <br>
+      <input type="text" name="service_id"><br>
+      <input type="button" value="Speichern" onClick="Settings.save(this.form)">
+    </form>
+   <script type="text/javascript">
+        // Initialize the VSS sdk
+        VSS.init();
+	VSS.notifyLoadSucceeded();
+    </script>
+</body>
+</html>

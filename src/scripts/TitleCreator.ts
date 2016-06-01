@@ -1,5 +1,5 @@
 /// <reference path='../../typings/main.d.ts' />
-class TitleCreator {
+export class TitleCreator {
     private context :any;
 
     constructor(actionContext : any) {

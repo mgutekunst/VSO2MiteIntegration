@@ -1,5 +1,5 @@
 /// <reference path='../../typings/main.d.ts' />
-class RestService {
+export class RestService {
     getIdAndTitle(id: number,callback :(id:number, title:string)=>void) : void {
 	    VSS.require(["VSS/Service", "TFS/WorkItemTracking/RestClient"], function (VSS_Service, TFS_Wit_WebApi){
 		// alert("insited VSS");

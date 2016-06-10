@@ -1,0 +1,19 @@
+{
+  "name": "VSO2MiteIntegration",
+  "homepage": "https://github.com/mgutekunst/VSO2MiteIntegration",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vss-web-extension-sdk": "^1.95.2"
+  }
+}

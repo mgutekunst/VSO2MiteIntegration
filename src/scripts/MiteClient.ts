@@ -1,11 +1,11 @@
 /// <reference path='../../typings/main.d.ts' />
 
-export interface IMiteConfig {
+interface IMiteConfig {
     apiKey: string;
     account: string;
 }
 
-export class MiteClient {
+class MiteClient {
     
     private http :XMLHttpRequest;
     private apiKey :string;
@@ -61,11 +61,11 @@ export class MiteClient {
     };
 }
 
-export interface IMiteCall {
+interface IMiteCall {
     time_entry: ITimeEntry;
 }
 
-export interface ITimeEntry {
+interface ITimeEntry {
     project_id :number;
     service_id :number;
     note? :string;

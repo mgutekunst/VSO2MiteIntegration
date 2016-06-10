@@ -10,7 +10,7 @@
     "publisher": "ManuelGutekunst",
     "public": false,
     "icons": {
-        "default": "img\/logo.png"
+        "default": "img/logo.png"
     },
     "targets": [
         {
@@ -29,6 +29,18 @@
         {
             "path": "dist",
             "addressable": true
+        },
+        {
+            "path": "settings.html",
+            "addressable": true
+        },
+        {
+            "path": "main.html",
+            "addressable": true
+        },
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
         }
     ],
     "categories": [
@@ -45,22 +57,22 @@
             "properties": {
                 "text": "Add and start Mite timer",
                 "title": "Updates the title of the work item from the extension",
-                "icon": "img\/logo.png",
-                "uri": "dist\/main.html",
+                "icon": "img/logo.png",
+                "uri": "main.html",
                 "group": "miteAction"
             }
         },
         {
             "id": "settings",
             "targets": [
-		"ms.vss-work-web.work-hub-group"
+                "ms.vss-work-web.work-hub-group"
             ],
             "type": "ms.vss-web.hub",
             "description": "Settings page for VSO2Mite integration",
             "properties": {
                 "name": "VSO2Mite Settings",
                 "order": 99,
-                "uri": "dist/settings.html"
+                "uri": "settings.html"
             }
         }
     ]

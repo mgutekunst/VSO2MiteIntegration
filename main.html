@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Mite 2 VSO</title>
+    <!-- <link rel="stylesheet" href="css/app.css" type="text/css" /> -->
+    <script src="dist/lib/VSS.SDK.js"></script>
+
+   <script type="text/javascript">
+        // Initialize the VSS sdk
+        VSS.init({
+	    usePlatformScripts: true,
+	    usePlatformStyles: true,
+	    explicitNotifyLoaded: true,
+	    moduleLoaderConfig: {
+		paths: {
+		    "scripts" : "dist/scripts"
+		}
+	    }
+	});
+
+	VSS.require(["scripts/main"], function(items) {
+	    VSS.notifyLoadSucceeded();
+	});
+    </script>
+</head>	
+</html>

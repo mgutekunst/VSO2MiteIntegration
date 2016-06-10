@@ -15,7 +15,7 @@ typings:
 build:
 #	mkdir dist/scripts
 	cp -v src/*.html dist/
-	cp -v src/scripts/VSS.SDK.js dist/scripts/VSS.SDK.js
+	cp -v src/scripts/VSS.SDK.js dist/lib/VSS.SDK.js
 	tsc 
 
 package: build

@@ -37,6 +37,10 @@
         {
             "path": "main.html",
             "addressable": true
+        },
+        {
+            "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
         }
     ],
     "categories": [

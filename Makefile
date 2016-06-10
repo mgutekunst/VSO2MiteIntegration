@@ -12,10 +12,10 @@ dist-clean: clean
 typings:
 	typings install
 
+bower:
+	bower install
+
 build:
-#	mkdir dist/scripts
-	cp -v src/*.html dist/
-	cp -v src/scripts/VSS.SDK.js dist/lib/VSS.SDK.js
 	tsc 
 
 package: build

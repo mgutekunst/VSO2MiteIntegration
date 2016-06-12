@@ -1,12 +1,17 @@
 {
     "compilerOptions": {
         "module": "amd",
-	"target": "es5",
+        "target": "es5",
         "outDir": "dist/",
+        "sourceMap": true,
         "rootDir": "src"
     },
     "files": [
+        "src/scripts/MiteClient.ts",
+        "src/scripts/MiteSettingsClient.ts",
+        "src/scripts/RestService.ts",
+        "src/scripts/TitleCreator.ts",
         "src/scripts/main.ts",
-	"src/scripts/settings.ts"
+        "src/scripts/settings.ts"
     ]
 }

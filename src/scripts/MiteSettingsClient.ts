@@ -1,3 +1,4 @@
+/// <reference path='../../typings/main.d.ts' />
 
 export class MiteSettingsClient {
     private accountKey = "accountKey";
@@ -17,5 +18,21 @@ export class MiteSettingsClient {
 	form.apiKey.value = localStorage.getItem(this.apiKey);
 	form.project_id.value = localStorage.getItem(this.projectIdKey);
 	form.service_id.value = localStorage.getItem(this.serviceIdKey);
+    }
+
+    getAccountKey() :string {
+	return localStorage.getItem(this.accountKey);
+    }
+    
+    getApiKey() :string {
+	return localStorage.getItem(this.apiKey);
+    }
+    
+    getProjectIdKey() :string {
+	return localStorage.getItem(this.projectIdKey);
+    }
+    
+    getServiceIdKey() :string {
+	return localStorage.getItem(this.serviceIdKey);	
     }
 }

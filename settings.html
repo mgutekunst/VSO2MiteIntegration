@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <title>Mite 2 VSO</title>
-    <link rel="stylesheet" href="css/app.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="css/app.css" type="text/css" /> -->
     <script src="bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js"></script>
-    <script data-main="scripts/settings"></script>
 </head>
-<body>
+<body style="margin-left:18px;">
     <h1>Mite 2 VSO integration settings</h1>
 
     <form id="settingsForm">
@@ -24,8 +23,20 @@
     </form>
    <script type="text/javascript">
         // Initialize the VSS sdk
-        VSS.init();
-	VSS.notifyLoadSucceeded();
+        VSS.init({
+	    usePlatformScripts: true,
+	    usePlatformStyles: true,
+	    explicitNotifyLoaded: true,
+	    moduleLoaderConfig: {
+		paths: {
+		    "scripts" : "dist/scripts"
+		}
+	    }
+	});
+
+	VSS.require(["scripts/settings"], function(items) {
+	    VSS.notifyLoadSucceeded();
+	});
     </script>
 </body>
 </html>

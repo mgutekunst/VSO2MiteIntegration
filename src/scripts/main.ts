@@ -9,6 +9,14 @@ import client = require('./MiteClient');
 import restService = require('./RestService');
 import title = require('./TitleCreator');
 
+let config = {
+    account: undefined,
+    apiKey :undefined
+};
+let settingsClient = new settings.MiteSettingsClient();
+settingsClient.getAccountKey((v)=> config.account = v);
+settingsClient.getApiKey((v)=> config.apiKey = v);
+
 var menuContributionHandler = (function () {
     "use strict";
     return {
@@ -19,13 +27,7 @@ var menuContributionHandler = (function () {
 
 	    let rest = new restService.RestService();
 	    let creator = new title.TitleCreator(actionContext);
-	    let settingsClient = new settings.MiteSettingsClient();
 
-	    
-	    let config = {
-		apiKey: settingsClient.getApiKey(),
-		account: settingsClient.getAccountKey(),
-	    };
 
 	    if(config.apiKey === undefined || config.account === undefined){
 		alert("please insert settings first");
@@ -50,8 +52,6 @@ var menuContributionHandler = (function () {
 		    });
 		});
 	    });
-	    // we're sending json here, so let's add this header
-	    
 	}
     };
 }());

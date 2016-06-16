@@ -5,27 +5,49 @@ export class MiteSettingsClient {
     private apiKey = "apiKey";
     private projectIdKey = "projectIdKey";
     private serviceIdKey = "serviceIdKey";
-    
+
     save(form :any) :void{
 	// save to local storage
-	localStorage.setItem(this.accountKey,form.account.value);
-	localStorage.setItem(this.apiKey,form.apiKey.value);
-	localStorage.setItem(this.projectIdKey,form.project_id.value);
-	localStorage.setItem(this.serviceIdKey,form.service_id.value);
+	this.saveDataToVSS(this.accountKey,form.account.value);
+	this.saveDataToVSS(this.apiKey,form.apiKey.value);
+	this.saveDataToVSS(this.projectIdKey,form.project_id.value);
+	this.saveDataToVSS(this.serviceIdKey,form.service_id.value);
     }
     loadData(form:any) :void {
-	form.account.value = localStorage.getItem(this.accountKey);
-	form.apiKey.value = localStorage.getItem(this.apiKey);
-	form.project_id.value = localStorage.getItem(this.projectIdKey);
-	form.service_id.value = localStorage.getItem(this.serviceIdKey);
+	this.loadDataFromVSS(this.accountKey, function(value :string) {
+	    form.account.value = value;
+	});
+	this.loadDataFromVSS(this.apiKey, function(value :string) {
+	    form.apiKey.value  = value;
+	});
+	this.loadDataFromVSS(this.projectIdKey, function(value :string) {
+	    form.project_id.value  = value;
+	});
+	this.loadDataFromVSS(this.serviceIdKey, function(value :string) {
+	    form.service_id.value  = value;
+	});
     }
 
-    getAccountKey() :string {
-	return localStorage.getItem(this.accountKey);
+    private saveDataToVSS(key:string, value:string) :void {
+	VSS.getService(VSS.ServiceIds.ExtensionData).then(function(ds:any) {
+	    let projectName = VSS.getWebContext().project.name;
+	    ds.setValue(`${projectName}_${key}`,value, {scopeType : "User"});
+	});
+    }
+
+    private loadDataFromVSS(key:string, callback :(value :string)=>void) :void {
+	VSS.getService(VSS.ServiceIds.ExtensionData).then(function(ds :any) {
+	    let projectName = VSS.getWebContext().project.name;
+	    ds.getValue(`${projectName}_${key}`,{scopeType : "User"}).then(callback);
+	});
+    }
+
+    getAccountKey(callback :(value:string)=>void) :void {
+	this.loadDataFromVSS(this.accountKey,callback);
     }
     
-    getApiKey() :string {
-	return localStorage.getItem(this.apiKey);
+    getApiKey(callback :(value:string)=>void) :void {
+	this.loadDataFromVSS(this.apiKey,callback);
     }
     
     getProjectIdKey() :string {

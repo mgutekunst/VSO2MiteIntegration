@@ -3,7 +3,7 @@
         "module": "amd",
         "target": "es5",
         "outDir": "dist/",
-        "sourceMap": true,
+        "sourceMap": false,
         "rootDir": "src"
     },
     "files": [

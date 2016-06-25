@@ -52,15 +52,8 @@ var menuContributionHandler = (function () {
 	    
 	    rest.getIdAndTitle(actionContext.workItemId,function(id:number, title:string){
 		let carstenTitle = creator.createTitle(id,title);
-		
-		let content :client.IMiteCall = {
-		    time_entry: {
-			project_id: 1605650,
-			service_id: 151147,
-			note: carstenTitle
-		    }
-		};
-		mite.createTimeEntry(content,function(response :client.IMiteCall){
+		miteCall.time_entry.note = carstenTitle;	
+		mite.createTimeEntry(miteCall,function(response :client.IMiteCall){
 		    mite.startTimeEntry(response.time_entry.id, function(response) {
 			alert("Timer started");
 		    });

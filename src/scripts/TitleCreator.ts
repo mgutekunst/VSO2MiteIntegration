@@ -7,6 +7,6 @@ export class TitleCreator {
     }
     
     public createTitle(id:number, title:string) :string {
-	return id + " ### " + title;
+	return id + "### " + title;
     }
 }

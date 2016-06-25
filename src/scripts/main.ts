@@ -9,13 +9,28 @@ import client = require('./MiteClient');
 import restService = require('./RestService');
 import title = require('./TitleCreator');
 
-let config = {
+let config :client.IMiteConfig;
+let miteCall :client.IMiteCall;
+
+config = {
     account: undefined,
     apiKey :undefined
 };
+
+miteCall = {
+    time_entry: {
+	project_id: undefined,
+	service_id: undefined,
+	note: undefined
+    }
+}
+
 let settingsClient = new settings.MiteSettingsClient();
 settingsClient.getAccountKey((v)=> config.account = v);
 settingsClient.getApiKey((v)=> config.apiKey = v);
+
+settingsClient.getProjectIdKey((v)=>miteCall.time_entry.project_id = v);
+settingsClient.getServiceIdKey((v)=>miteCall.time_entry.service_id = v);
 
 var menuContributionHandler = (function () {
     "use strict";
@@ -28,7 +43,6 @@ var menuContributionHandler = (function () {
 	    let rest = new restService.RestService();
 	    let creator = new title.TitleCreator(actionContext);
 
-
 	    if(config.apiKey === undefined || config.account === undefined){
 		alert("please insert settings first");
 		return;
@@ -37,13 +51,13 @@ var menuContributionHandler = (function () {
 	    let mite = new client.MiteClient(config);
 	    
 	    rest.getIdAndTitle(actionContext.workItemId,function(id:number, title:string){
-		let CarstenTitle = creator.createTitle(id,title);
+		let carstenTitle = creator.createTitle(id,title);
 		
 		let content :client.IMiteCall = {
 		    time_entry: {
 			project_id: 1605650,
 			service_id: 151147,
-			note: CarstenTitle
+			note: carstenTitle
 		    }
 		};
 		mite.createTimeEntry(content,function(response :client.IMiteCall){

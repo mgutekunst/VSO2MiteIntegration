@@ -35,7 +35,7 @@ export class MiteSettingsClient {
 	});
     }
 
-    private loadDataFromVSS(key:string, callback :(value :string)=>void) :void {
+    private loadDataFromVSS(key:string, callback :(value :any)=>void) :void {
 	VSS.getService(VSS.ServiceIds.ExtensionData).then(function(ds :any) {
 	    let projectName = VSS.getWebContext().project.name;
 	    ds.getValue(`${projectName}_${key}`,{scopeType : "User"}).then(callback);
@@ -50,11 +50,11 @@ export class MiteSettingsClient {
 	this.loadDataFromVSS(this.apiKey,callback);
     }
     
-    getProjectIdKey() :string {
-	return localStorage.getItem(this.projectIdKey);
+    getProjectIdKey(callback :(value:number)=>void) :void {
+	this.loadDataFromVSS(this.projectIdKey,callback);
     }
     
-    getServiceIdKey() :string {
-	return localStorage.getItem(this.serviceIdKey);	
+    getServiceIdKey(callback :(value:number)=>void) :void {
+	this.loadDataFromVSS(this.serviceIdKey,callback);	
     }
 }
